@@ -1,0 +1,6 @@
+<% if @student.errors.any? %>
+$("#studentError").html("<%= escape_javascript render("admin/shared/error", model: @student) %>");
+<% else %>
+$("#studentRow_"+<%= @student.id %>).replaceWith("<%= escape_javascript render('student_row', student: @student) %>");
+$(".close-modal").click();
+<% end %>

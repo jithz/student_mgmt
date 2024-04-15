@@ -1,0 +1,54 @@
+
+<p><%= notice %></p>
+<div class="col-lg-12">
+	<%= render "admin/students/search_form", q: @q %>
+	<h1>Listing Students</h1>
+	<%= link_to 'New Student', new_admin_student_path,class: "btn btn-primary btn-lg mb-3",
+							data: { toggle: 'modal', target: '#newStudentModal', remote: true } %>
+	<table class="table table-bordered">
+		<thead>
+		<tr>
+			<th>Student</th>
+			<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody id="studentsTable">
+		  <% @students.each do |student| %>
+		    <%= render 'student_row', student: student  %>
+		  <% end %>
+		</tbody>
+	</table>
+	<%= paginate @students %>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="newStudentModal" tabindex="-1" role="dialog" aria-labelledby="newStudentModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="newStudentModalLabel">New Student</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div id="newStudentForm">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="editStudentModalLabel">Edit Student</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div id="editStudentForm">
+			</div>
+		</div>
+	</div>
+</div>
