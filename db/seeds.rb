@@ -11,3 +11,12 @@ student = Student.create(
 	last_name: 'Mukund',
 	email: 'jithyamukund@gmail.com'
 	)
+
+Student.all.each do |student|
+	student.blogs.create(title: "dummy blog for #{student.id}",content: 'custom content pending')
+end
+
+Course.create(name: 'rails bootcamp', description: 'pending')
+Course.create(name: 'html', description: 'pending')
+Course.create(name: 'css', description: 'pending')
+Course.create(name: 'ruby', description: 'pending')

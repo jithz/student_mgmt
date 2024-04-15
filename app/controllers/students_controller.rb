@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  layout 'admin'
   before_action :set_student, only: %i[show edit update destroy]
 
   def index
@@ -41,7 +42,8 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-  	params.require(:student).permit(:first_name,:last_name, :email)
+  	params.require(:student).permit(:first_name,:last_name, :email, :date_of_birth, :local_address, 
+      :permanent_address, :permanent_contact_number, :alternate_contact_number)
   end
 
   def set_student
