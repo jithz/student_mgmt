@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_04_122653) do
+ActiveRecord::Schema.define(version: 2024_04_22_054719) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -130,6 +130,13 @@ ActiveRecord::Schema.define(version: 2024_04_04_122653) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "student_projects", force: :cascade do |t|
     t.integer "student_id", null: false
     t.integer "project_id", null: false
@@ -138,6 +145,16 @@ ActiveRecord::Schema.define(version: 2024_04_04_122653) do
     t.date "submission_date"
     t.index ["project_id"], name: "index_student_projects_on_project_id"
     t.index ["student_id"], name: "index_student_projects_on_student_id"
+  end
+
+  create_table "student_skills", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "skill_id"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_student_skills_on_skill_id"
+    t.index ["student_id"], name: "index_student_skills_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|

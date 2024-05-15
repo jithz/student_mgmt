@@ -7,6 +7,9 @@ class Student < ApplicationRecord
   has_many :student_projects
   has_many :projects, through: :student_projects
 
+  has_many :student_skills, dependent: :destroy
+  has_many :skills, through: :student_skills
+
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
   validates :first_name, :last_name, length: { minimum: 2, maximum: 50 }
